@@ -134,6 +134,7 @@
     <EmbeddedResource Include="UI\Form_TamVang.resx">
       <DependentUpon>Form_TamVang.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="readme.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -167,6 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logout %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
