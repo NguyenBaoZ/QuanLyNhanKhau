@@ -70,4 +70,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Address" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="3a6909ec-7ebc-4ef7-91c4-04d5567b9973" ChangeDateTime="12/07/2021 07:20:25">
+    <Property Name="ElementName" Value="[dbo].[Users].[SDT]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PhoneNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="76e3e898-c76b-41eb-826d-f8a62ac3889c" ChangeDateTime="12/07/2021 07:20:33">
+    <Property Name="ElementName" Value="[dbo].[Users].[PhoneNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Phone" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b8f13600-9270-45b1-9366-cd840d2b666a" ChangeDateTime="12/07/2021 07:21:19">
+    <Property Name="ElementName" Value="[dbo].[UserDetails].[CCCDProvideAddress]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CCCDProvideUrgent" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bdffb673-8340-4966-9429-5e86cea72988" ChangeDateTime="12/07/2021 07:24:32">
+    <Property Name="ElementName" Value="[dbo].[Absence].[Description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Absence]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ResolveDescription" />
+  </Operation>
 </Operations>
