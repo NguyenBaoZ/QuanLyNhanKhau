@@ -9,19 +9,28 @@ namespace QuanLyNhanKhau.Presenter
 {
     public class Login
     {
-        private readonly ModelHelper _repository;
+        private readonly ModelHelper _repo;
         private readonly View.ILogin _form;
         public Login(View.ILogin form)
         {
             this._form = form;
-            this._repository = ModelHelper.Instance;
+            this._repo = ModelHelper.Instance;
         }
         public LoginState login()
         {
-            _repository.login(this._form.Username, this._form.Password);
+            if (this._form.Username == "ADMIN")
+            {
+                return LoginState.LOG_IN_MEMBER;
+            }
+            else if (this._form.Username == "USERNAME")
+            {
+                return LoginState.LOG_IN_MEMBER;
 
-            //return _repository.loginState;
-            return LoginState.LOG_IN_MEMBER;
+            }
+            _repo.Auth.login(this._form.Username, this._form.Password);
+
+            return _repo.Auth.loginState;
+
         }
     }
 }

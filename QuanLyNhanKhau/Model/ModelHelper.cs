@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace QuanLyNhanKhau.Model
 {
-    class ModelHelper : Authentication
+    class ModelHelper
     {
         private static ModelHelper instance = null;
+        public Authentication Auth { get; set; }
         public static ModelHelper Instance
         {
             get
@@ -24,8 +25,9 @@ namespace QuanLyNhanKhau.Model
                 instance = value;
             }
         }
-        private ModelHelper() : base()
+        private ModelHelper()
         {
+            this.Auth = new Authentication();
         }
     }
 }
