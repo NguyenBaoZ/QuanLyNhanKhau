@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,11 +48,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,66 +74,106 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\Form_Admin.cs">
+    <Compile Include="Model\CitizenDetail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HouseholdBook.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HouseHoldMember.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HouseholdTranfer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Authenticate.cs" />
+    <Compile Include="Model\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelHelper.cs" />
+    <Compile Include="Model\TemporaryRequest.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Presenter\AdminAction.cs" />
+    <Compile Include="Presenter\Login.cs" />
+    <Compile Include="Presenter\RequestBase.cs" />
+    <Compile Include="Presenter\UserAction.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="View\Form_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_Admin.Designer.cs">
+    <Compile Include="View\Form_Admin.Designer.cs">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Form_Info.cs">
+    <Compile Include="View\Form_Info.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_Info.Designer.cs">
+    <Compile Include="View\Form_Info.Designer.cs">
       <DependentUpon>Form_Info.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Form_Login.cs">
+    <Compile Include="View\Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_Login.Designer.cs">
+    <Compile Include="View\Form_Login.Designer.cs">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Form_Base.cs">
+    <Compile Include="View\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_Base.Designer.cs">
+    <Compile Include="View\Form_Base.Designer.cs">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Form_ChuyenKhau.cs">
+    <Compile Include="View\Form_ChuyenKhau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_ChuyenKhau.Designer.cs">
+    <Compile Include="View\Form_ChuyenKhau.Designer.cs">
       <DependentUpon>Form_ChuyenKhau.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Form_SoHoKhau.cs">
+    <Compile Include="View\Form_SoHoKhau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_SoHoKhau.Designer.cs">
+    <Compile Include="View\Form_SoHoKhau.Designer.cs">
       <DependentUpon>Form_SoHoKhau.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Form_TamTru.cs">
+    <Compile Include="View\Form_TamTru.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_TamTru.Designer.cs">
+    <Compile Include="View\Form_TamTru.Designer.cs">
       <DependentUpon>Form_TamTru.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Form_TamVang.cs">
+    <Compile Include="View\Form_TamVang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Form_TamVang.Designer.cs">
+    <Compile Include="View\Form_TamVang.Designer.cs">
       <DependentUpon>Form_TamVang.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Form_Admin.resx">
+    <EmbeddedResource Include="View\Form_Admin.resx">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form_Info.resx">
+    <EmbeddedResource Include="View\Form_Info.resx">
       <DependentUpon>Form_Info.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form_Login.resx">
+    <EmbeddedResource Include="View\Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form_Base.resx">
+    <EmbeddedResource Include="View\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -122,18 +186,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\Form_ChuyenKhau.resx">
+    <EmbeddedResource Include="View\Form_ChuyenKhau.resx">
       <DependentUpon>Form_ChuyenKhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form_SoHoKhau.resx">
+    <EmbeddedResource Include="View\Form_SoHoKhau.resx">
       <DependentUpon>Form_SoHoKhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form_TamTru.resx">
+    <EmbeddedResource Include="View\Form_TamTru.resx">
       <DependentUpon>Form_TamTru.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Form_TamVang.resx">
+    <EmbeddedResource Include="View\Form_TamVang.resx">
       <DependentUpon>Form_TamVang.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="readme.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -171,9 +243,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="Model\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

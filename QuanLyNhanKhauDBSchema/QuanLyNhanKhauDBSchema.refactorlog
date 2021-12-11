@@ -98,4 +98,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ResolveDescription" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="ec27148e-4633-4ad6-9440-4d4af3a571e1" ChangeDateTime="12/08/2021 20:13:28">
+    <Property Name="ElementName" Value="[dbo].[HouseholdTranfer].[FromBookID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[HouseholdTranfer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FromAddress" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="572a1191-8ca8-446b-b199-cb2f22594646" ChangeDateTime="12/08/2021 20:13:42">
+    <Property Name="ElementName" Value="[dbo].[HouseholdTranfer].[ToBookID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[HouseholdTranfer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ToAddress" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3c530970-9110-4f48-9984-65f7ab0e46d9" ChangeDateTime="12/08/2021 20:17:16">
+    <Property Name="ElementName" Value="[dbo].[HouseholdBook].[HouseHoldOwner]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[HouseholdBook]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Owner" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="292b7a46-e2d4-412d-93bb-d81217cda7cf" ChangeDateTime="12/08/2021 20:18:25">
+    <Property Name="ElementName" Value="[dbo].[HouseholdTranfer].[CitizenDetails]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[HouseholdTranfer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Bookid" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6ee64f51-ff7f-4946-ad04-db972a737a3a" ChangeDateTime="12/08/2021 20:18:27">
+    <Property Name="ElementName" Value="[dbo].[HouseholdTranfer].[Bookid]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[HouseholdTranfer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BookId" />
+  </Operation>
 </Operations>

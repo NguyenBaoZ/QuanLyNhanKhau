@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CitizenDetails">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="int" Nullable="false" />
+          <Property Name="User_Id" Type="int" />
+          <Property Name="Address" Type="ntext" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="CCCDId" Type="char" MaxLength="12" />
+          <Property Name="UpdatedAt" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CCCDProvideAddress" Type="ntext" Nullable="false" />
+          <Property Name="CCCDProvideDate" Type="datetime" Nullable="false" />
+          <Property Name="CCCDProvideUrgent" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ContactEmail" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HouseholdBook">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="ntext" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="Owner" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HouseHoldMember">
+          <Key>
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="CitizenId" />
+          </Key>
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="CitizenId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HouseholdTranfer">
+          <Key>
+            <PropertyRef Name="TranferId" />
+          </Key>
+          <Property Name="TranferId" Type="int" Nullable="false" />
+          <Property Name="FromAddress" Type="ntext" />
+          <Property Name="ToAddress" Type="ntext" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="Approved" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="ResolveDescription" Type="ntext" />
+          <Property Name="ResolveBy" Type="int" Nullable="false" />
+          <Property Name="Reason" Type="ntext" />
+          <Property Name="CreatedDate" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TemporaryRequest">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestId" Type="int" Nullable="false" />
+          <Property Name="RequestBy" Type="int" Nullable="false" />
+          <Property Name="Reason" Type="ntext" />
+          <Property Name="Approved" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="ResolveDescription" Type="ntext" />
+          <Property Name="ResolveBy" Type="int" Nullable="false" />
+          <Property Name="ExpiredDate" Type="nchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="nchar" MaxLength="10" />
+          <Property Name="RequestType" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="Role" Type="char" MaxLength="9" />
+        </EntityType>
+        <Association Name="FK_CitizenDetails_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="CitizenDetails" Type="Self.CitizenDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CitizenDetails">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HouseholdBook_CitizenDetails">
+          <End Role="CitizenDetails" Type="Self.CitizenDetails" Multiplicity="1" />
+          <End Role="HouseholdBook" Type="Self.HouseholdBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenDetails">
+              <PropertyRef Name="DetailId" />
+            </Principal>
+            <Dependent Role="HouseholdBook">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HouseholdTranfer_HouseholdBook">
+          <End Role="HouseholdBook" Type="Self.HouseholdBook" Multiplicity="1" />
+          <End Role="HouseholdTranfer" Type="Self.HouseholdTranfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HouseholdBook">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="HouseholdTranfer">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemporaryRequest_RequestBy">
+          <End Role="CitizenDetails" Type="Self.CitizenDetails" Multiplicity="1" />
+          <End Role="TemporaryRequest" Type="Self.TemporaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenDetails">
+              <PropertyRef Name="DetailId" />
+            </Principal>
+            <Dependent Role="TemporaryRequest">
+              <PropertyRef Name="RequestBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemporaryRequest_ResolveBy">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="TemporaryRequest" Type="Self.TemporaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TemporaryRequest">
+              <PropertyRef Name="ResolveBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CitizenDetails" EntityType="Self.CitizenDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HouseholdBook" EntityType="Self.HouseholdBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HouseHoldMember" EntityType="Self.HouseHoldMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HouseholdTranfer" EntityType="Self.HouseholdTranfer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemporaryRequest" EntityType="Self.TemporaryRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CitizenDetails_Users" Association="Self.FK_CitizenDetails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CitizenDetails" EntitySet="CitizenDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HouseholdBook_CitizenDetails" Association="Self.FK_HouseholdBook_CitizenDetails">
+            <End Role="CitizenDetails" EntitySet="CitizenDetails" />
+            <End Role="HouseholdBook" EntitySet="HouseholdBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HouseholdTranfer_HouseholdBook" Association="Self.FK_HouseholdTranfer_HouseholdBook">
+            <End Role="HouseholdBook" EntitySet="HouseholdBook" />
+            <End Role="HouseholdTranfer" EntitySet="HouseholdTranfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemporaryRequest_RequestBy" Association="Self.FK_TemporaryRequest_RequestBy">
+            <End Role="CitizenDetails" EntitySet="CitizenDetails" />
+            <End Role="TemporaryRequest" EntitySet="TemporaryRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemporaryRequest_ResolveBy" Association="Self.FK_TemporaryRequest_ResolveBy">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TemporaryRequest" EntitySet="TemporaryRequest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CitizenDetail">
+          <Key>
+            <PropertyRef Name="DetailId" />
+          </Key>
+          <Property Name="DetailId" Type="Int32" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CCCDId" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="UpdatedAt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CCCDProvideAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CCCDProvideDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CCCDProvideUrgent" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CitizenDetails_Users" FromRole="CitizenDetails" ToRole="Users" />
+          <NavigationProperty Name="HouseholdBooks" Relationship="Self.FK_HouseholdBook_CitizenDetails" FromRole="CitizenDetails" ToRole="HouseholdBook" />
+          <NavigationProperty Name="TemporaryRequests" Relationship="Self.FK_TemporaryRequest_RequestBy" FromRole="CitizenDetails" ToRole="TemporaryRequest" />
+        </EntityType>
+        <EntityType Name="HouseholdBook">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Owner" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CitizenDetail" Relationship="Self.FK_HouseholdBook_CitizenDetails" FromRole="HouseholdBook" ToRole="CitizenDetails" />
+          <NavigationProperty Name="HouseholdTranfers" Relationship="Self.FK_HouseholdTranfer_HouseholdBook" FromRole="HouseholdBook" ToRole="HouseholdTranfer" />
+        </EntityType>
+        <EntityType Name="HouseHoldMember">
+          <Key>
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="CitizenId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="CitizenId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HouseholdTranfer">
+          <Key>
+            <PropertyRef Name="TranferId" />
+          </Key>
+          <Property Name="TranferId" Type="Int32" Nullable="false" />
+          <Property Name="FromAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ToAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="Approved" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ResolveDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResolveBy" Type="Int32" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="HouseholdBook" Relationship="Self.FK_HouseholdTranfer_HouseholdBook" FromRole="HouseholdTranfer" ToRole="HouseholdBook" />
+        </EntityType>
+        <EntityType Name="TemporaryRequest">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestId" Type="Int32" Nullable="false" />
+          <Property Name="RequestBy" Type="Int32" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Approved" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ResolveDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResolveBy" Type="Int32" Nullable="false" />
+          <Property Name="ExpiredDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RequestType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CitizenDetail" Relationship="Self.FK_TemporaryRequest_RequestBy" FromRole="TemporaryRequest" ToRole="CitizenDetails" />
+          <NavigationProperty Name="User" Relationship="Self.FK_TemporaryRequest_ResolveBy" FromRole="TemporaryRequest" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Role" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CitizenDetails" Relationship="Self.FK_CitizenDetails_Users" FromRole="Users" ToRole="CitizenDetails" />
+          <NavigationProperty Name="TemporaryRequests" Relationship="Self.FK_TemporaryRequest_ResolveBy" FromRole="Users" ToRole="TemporaryRequest" />
+        </EntityType>
+        <Association Name="FK_CitizenDetails_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CitizenDetails" Type="Self.CitizenDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CitizenDetails">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HouseholdBook_CitizenDetails">
+          <End Role="CitizenDetails" Type="Self.CitizenDetail" Multiplicity="1" />
+          <End Role="HouseholdBook" Type="Self.HouseholdBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenDetails">
+              <PropertyRef Name="DetailId" />
+            </Principal>
+            <Dependent Role="HouseholdBook">
+              <PropertyRef Name="Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemporaryRequest_RequestBy">
+          <End Role="CitizenDetails" Type="Self.CitizenDetail" Multiplicity="1" />
+          <End Role="TemporaryRequest" Type="Self.TemporaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CitizenDetails">
+              <PropertyRef Name="DetailId" />
+            </Principal>
+            <Dependent Role="TemporaryRequest">
+              <PropertyRef Name="RequestBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HouseholdTranfer_HouseholdBook">
+          <End Role="HouseholdBook" Type="Self.HouseholdBook" Multiplicity="1" />
+          <End Role="HouseholdTranfer" Type="Self.HouseholdTranfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HouseholdBook">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="HouseholdTranfer">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemporaryRequest_ResolveBy">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="TemporaryRequest" Type="Self.TemporaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TemporaryRequest">
+              <PropertyRef Name="ResolveBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyNhanKhauDBSchemaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CitizenDetails" EntityType="Self.CitizenDetail" />
+          <EntitySet Name="HouseholdBooks" EntityType="Self.HouseholdBook" />
+          <EntitySet Name="HouseHoldMembers" EntityType="Self.HouseHoldMember" />
+          <EntitySet Name="HouseholdTranfers" EntityType="Self.HouseholdTranfer" />
+          <EntitySet Name="TemporaryRequests" EntityType="Self.TemporaryRequest" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_CitizenDetails_Users" Association="Self.FK_CitizenDetails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CitizenDetails" EntitySet="CitizenDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HouseholdBook_CitizenDetails" Association="Self.FK_HouseholdBook_CitizenDetails">
+            <End Role="CitizenDetails" EntitySet="CitizenDetails" />
+            <End Role="HouseholdBook" EntitySet="HouseholdBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemporaryRequest_RequestBy" Association="Self.FK_TemporaryRequest_RequestBy">
+            <End Role="CitizenDetails" EntitySet="CitizenDetails" />
+            <End Role="TemporaryRequest" EntitySet="TemporaryRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HouseholdTranfer_HouseholdBook" Association="Self.FK_HouseholdTranfer_HouseholdBook">
+            <End Role="HouseholdBook" EntitySet="HouseholdBooks" />
+            <End Role="HouseholdTranfer" EntitySet="HouseholdTranfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemporaryRequest_ResolveBy" Association="Self.FK_TemporaryRequest_ResolveBy">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TemporaryRequest" EntitySet="TemporaryRequests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="QuanLyNhanKhauDBSchemaEntities">
+          <EntitySetMapping Name="CitizenDetails">
+            <EntityTypeMapping TypeName="Model.CitizenDetail">
+              <MappingFragment StoreEntitySet="CitizenDetails">
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="CCCDId" ColumnName="CCCDId" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CCCDProvideAddress" ColumnName="CCCDProvideAddress" />
+                <ScalarProperty Name="CCCDProvideDate" ColumnName="CCCDProvideDate" />
+                <ScalarProperty Name="CCCDProvideUrgent" ColumnName="CCCDProvideUrgent" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HouseholdBooks">
+            <EntityTypeMapping TypeName="Model.HouseholdBook">
+              <MappingFragment StoreEntitySet="HouseholdBook">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HouseHoldMembers">
+            <EntityTypeMapping TypeName="Model.HouseHoldMember">
+              <MappingFragment StoreEntitySet="HouseHoldMember">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="CitizenId" ColumnName="CitizenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HouseholdTranfers">
+            <EntityTypeMapping TypeName="Model.HouseholdTranfer">
+              <MappingFragment StoreEntitySet="HouseholdTranfer">
+                <ScalarProperty Name="TranferId" ColumnName="TranferId" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="ResolveDescription" ColumnName="ResolveDescription" />
+                <ScalarProperty Name="ResolveBy" ColumnName="ResolveBy" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemporaryRequests">
+            <EntityTypeMapping TypeName="Model.TemporaryRequest">
+              <MappingFragment StoreEntitySet="TemporaryRequest">
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="RequestBy" ColumnName="RequestBy" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="ResolveDescription" ColumnName="ResolveDescription" />
+                <ScalarProperty Name="ResolveBy" ColumnName="ResolveBy" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

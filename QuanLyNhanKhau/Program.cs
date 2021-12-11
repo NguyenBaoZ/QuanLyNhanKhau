@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using System.Data.Entity.Core;
 namespace QuanLyNhanKhau
 {
     static class Program
@@ -11,9 +11,18 @@ namespace QuanLyNhanKhau
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Login());
+            try
+            {
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                var form = new View.Form_Login();
+                Application.Run(form);
+            }
+            catch (EntityException err)
+            {
+                MessageBox.Show(err.Message + "\n" + "Database isn't existed");
+            }
         }
     }
 }
