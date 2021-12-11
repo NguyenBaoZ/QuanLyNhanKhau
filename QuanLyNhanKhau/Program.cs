@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.Entity.Core;
+using System.Globalization;
 namespace QuanLyNhanKhau
 {
     static class Program
@@ -16,6 +17,7 @@ namespace QuanLyNhanKhau
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+                Application.CurrentCulture = new CultureInfo("vi-VN");
                 var form = new View.Form_Login();
                 Application.Run(form);
             }
