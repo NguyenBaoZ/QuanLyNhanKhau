@@ -370,5 +370,17 @@ namespace QuanLyNhanKhau.View
                 txbConfirm.UseSystemPasswordChar = false;
             }
         }
+
+        private void returnToLogin(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
+        private void btnSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form_SignUp form = new Form_SignUp();
+            form.Show();
+            form.FormClosed += returnToLogin;
+            this.Hide();
+        }
     }
 }
