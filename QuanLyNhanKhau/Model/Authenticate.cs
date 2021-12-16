@@ -56,7 +56,7 @@ namespace QuanLyNhanKhau.Model
             }
             return null;
         }
-        public User signIn(string email, string password, string cccid)
+        public User signUp(string email, string password, string cccid)
         {
             var details = (from p in ctx.CitizenDetails
                            where p.CCCDId == cccid
