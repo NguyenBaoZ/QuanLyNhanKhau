@@ -50,7 +50,7 @@
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
-            this.btnThayDoiChuHo = new System.Windows.Forms.Button();
+            this.btnThayDoiNhanKhau = new System.Windows.Forms.Button();
             this.pnlControl.SuspendLayout();
             this.pnlInformation.SuspendLayout();
             this.pnlButton.SuspendLayout();
@@ -128,7 +128,7 @@
             this.pnlSubMenu.AutoScroll = true;
             this.pnlSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(45)))), ((int)(((byte)(67)))));
             this.pnlSubMenu.Controls.Add(this.btnChuyenKhau);
-            this.pnlSubMenu.Controls.Add(this.btnThayDoiChuHo);
+            this.pnlSubMenu.Controls.Add(this.btnThayDoiNhanKhau);
             this.pnlSubMenu.Controls.Add(this.btnThongTinSoKhau);
             this.pnlSubMenu.Controls.Add(this.btnCapSoHoKhau);
             this.pnlSubMenu.Location = new System.Drawing.Point(2, 264);
@@ -379,23 +379,23 @@
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnThayDoiChuHo
+            // btnThayDoiNhanKhau
             // 
-            this.btnThayDoiChuHo.FlatAppearance.BorderSize = 0;
-            this.btnThayDoiChuHo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
-            this.btnThayDoiChuHo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
-            this.btnThayDoiChuHo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThayDoiChuHo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThayDoiChuHo.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnThayDoiChuHo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThayDoiChuHo.Location = new System.Drawing.Point(4, 114);
-            this.btnThayDoiChuHo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnThayDoiChuHo.Name = "btnThayDoiChuHo";
-            this.btnThayDoiChuHo.Size = new System.Drawing.Size(348, 47);
-            this.btnThayDoiChuHo.TabIndex = 5;
-            this.btnThayDoiChuHo.Text = "Thay Đổi Nhân Khẩu";
-            this.btnThayDoiChuHo.UseVisualStyleBackColor = true;
-            this.btnThayDoiChuHo.Click += new System.EventHandler(this.btnThayDoiChuHo_Click);
+            this.btnThayDoiNhanKhau.FlatAppearance.BorderSize = 0;
+            this.btnThayDoiNhanKhau.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(50)))), ((int)(((byte)(70)))));
+            this.btnThayDoiNhanKhau.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
+            this.btnThayDoiNhanKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThayDoiNhanKhau.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThayDoiNhanKhau.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnThayDoiNhanKhau.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThayDoiNhanKhau.Location = new System.Drawing.Point(4, 114);
+            this.btnThayDoiNhanKhau.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThayDoiNhanKhau.Name = "btnThayDoiNhanKhau";
+            this.btnThayDoiNhanKhau.Size = new System.Drawing.Size(348, 47);
+            this.btnThayDoiNhanKhau.TabIndex = 5;
+            this.btnThayDoiNhanKhau.Text = "Thay Đổi Nhân Khẩu";
+            this.btnThayDoiNhanKhau.UseVisualStyleBackColor = true;
+            this.btnThayDoiNhanKhau.Click += new System.EventHandler(this.btnThayDoiNhanKhau_Click);
             // 
             // Form_Base
             // 
@@ -446,6 +446,6 @@
         private System.Windows.Forms.Button btnThongTinSoKhau;
         private System.Windows.Forms.Button btnCapSoHoKhau;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnThayDoiChuHo;
+        private System.Windows.Forms.Button btnThayDoiNhanKhau;
     }
 }

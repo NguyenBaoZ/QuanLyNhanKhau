@@ -116,66 +116,99 @@
     <Compile Include="Presenter\RequestBase.cs" />
     <Compile Include="Presenter\UserAction.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="View\Form_Admin.cs">
+    <Compile Include="View\Admin\Form_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_Admin.Designer.cs">
+    <Compile Include="View\Admin\Form_Admin.Designer.cs">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_Info.cs">
+    <Compile Include="View\Authen\Form_SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_Info.Designer.cs">
-      <DependentUpon>Form_Info.cs</DependentUpon>
+    <Compile Include="View\Authen\Form_SignUp.Designer.cs">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_Login.cs">
+    <Compile Include="View\Shared\Form_Profile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_Login.Designer.cs">
+    <Compile Include="View\Shared\Form_Profile.Designer.cs">
+      <DependentUpon>Form_Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shared\Form_SelfInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Shared\Form_SelfInfo.Designer.cs">
+      <DependentUpon>Form_SelfInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\User\Form_XemSoHoKHau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\User\Form_XemSoHoKHau.Designer.cs">
+      <DependentUpon>Form_XemSoHoKHau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Authen\Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Authen\Form_Login.Designer.cs">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_Base.cs">
+    <Compile Include="View\User\Form_Base.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_Base.Designer.cs">
+    <Compile Include="View\User\Form_Base.Designer.cs">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Form_ChuyenKhau.cs">
+    <Compile Include="View\User\Form_ChuyenKhau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_ChuyenKhau.Designer.cs">
+    <Compile Include="View\User\Form_ChuyenKhau.Designer.cs">
       <DependentUpon>Form_ChuyenKhau.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_SoHoKhau.cs">
+    <Compile Include="View\User\Form_DoiNhanKhau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_SoHoKhau.Designer.cs">
-      <DependentUpon>Form_SoHoKhau.cs</DependentUpon>
+    <Compile Include="View\User\Form_DoiNhanKhau.Designer.cs">
+      <DependentUpon>Form_DoiNhanKhau.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_TamTru.cs">
+    <Compile Include="View\User\Form_CapSoHoKhau.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_TamTru.Designer.cs">
+    <Compile Include="View\User\Form_CapSoHoKhau.Designer.cs">
+      <DependentUpon>Form_CapSoHoKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\User\Form_TamTru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\User\Form_TamTru.Designer.cs">
       <DependentUpon>Form_TamTru.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_TamVang.cs">
+    <Compile Include="View\User\Form_TamVang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_TamVang.Designer.cs">
+    <Compile Include="View\User\Form_TamVang.Designer.cs">
       <DependentUpon>Form_TamVang.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Form_Admin.resx">
+    <EmbeddedResource Include="View\Admin\Form_Admin.resx">
       <DependentUpon>Form_Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Info.resx">
-      <DependentUpon>Form_Info.cs</DependentUpon>
+    <EmbeddedResource Include="View\Authen\Form_SignUp.resx">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Login.resx">
+    <EmbeddedResource Include="View\Shared\Form_Profile.resx">
+      <DependentUpon>Form_Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Shared\Form_SelfInfo.resx">
+      <DependentUpon>Form_SelfInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\User\Form_XemSoHoKHau.resx">
+      <DependentUpon>Form_XemSoHoKHau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Authen\Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Base.resx">
+    <EmbeddedResource Include="View\User\Form_Base.resx">
       <DependentUpon>Form_Base.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -188,16 +221,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\Form_ChuyenKhau.resx">
+    <EmbeddedResource Include="View\User\Form_ChuyenKhau.resx">
       <DependentUpon>Form_ChuyenKhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_SoHoKhau.resx">
-      <DependentUpon>Form_SoHoKhau.cs</DependentUpon>
+    <EmbeddedResource Include="View\User\Form_DoiNhanKhau.resx">
+      <DependentUpon>Form_DoiNhanKhau.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_TamTru.resx">
+    <EmbeddedResource Include="View\User\Form_CapSoHoKhau.resx">
+      <DependentUpon>Form_CapSoHoKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\User\Form_TamTru.resx">
       <DependentUpon>Form_TamTru.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_TamVang.resx">
+    <EmbeddedResource Include="View\User\Form_TamVang.resx">
       <DependentUpon>Form_TamVang.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\Model.edmx">

@@ -138,94 +138,85 @@ namespace QuanLyNhanKhau.View
                 miniForm.BringToFront();
             }
         }
-        private void btnSoHoKhau_Click(object sender, EventArgs e)
-        {
-            //loadMiniForm<Form_BanHang>();
 
-            this.BackColor = Color.FromArgb(12, 61, 92);
-            btnDKTV.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTT.BackColor = Color.FromArgb(4, 41, 68);
-            //btnTimKiem.BackColor = Color.FromArgb(4, 41, 68);
-            //btnBaoCao.BackColor = Color.FromArgb(4, 41, 68);
-        }
         #endregion
 
         #region Menu Button
+        private void changeColor(Button root, List<Button> buttonSub, List<Button> button)
+        {
+            root.BackColor = Color.FromArgb(12, 61, 92);
+            for (int i = 0; i < buttonSub.Count; i++)
+            {
+                buttonSub[i].BackColor = Color.FromArgb(5, 45, 67);
+            }
+            for (int i = 0; i < button.Count; i++)
+            {
+                button[i].BackColor = Color.FromArgb(4, 41, 68);
+            }
+        }
+        private void btnSoHoKhau_Click(object sender, EventArgs e)
+        {
+            changeColor(btnSoHoKhau, 
+                        new List<Button> { btnCapSoHoKhau, btnThongTinSoKhau, btnThayDoiNhanKhau, btnChuyenKhau }, 
+                        new List<Button> { btnDKTV, btnDKTT,btnLogout });
+        }
         private void btnDKTV_Click(object sender, EventArgs e)
         {
             loadMiniForm<View.Form_TamVang>();
-            btnSoHoKhau.BackColor = Color.FromArgb(4, 41, 68);
-            this.BackColor = Color.FromArgb(12, 61, 92);
-            btnDKTT.BackColor = Color.FromArgb(4, 41, 68);
-            //btnTimKiem.BackColor = Color.FromArgb(4, 41, 68);
-            //btnBaoCao.BackColor = Color.FromArgb(4, 41, 68);
-            btnLogout.BackColor = Color.FromArgb(4, 41, 68);
+            changeColor(btnDKTV, 
+                        new List<Button> { btnCapSoHoKhau, btnThongTinSoKhau, btnThayDoiNhanKhau, btnChuyenKhau }, 
+                        new List<Button> { btnSoHoKhau, btnDKTT, btnLogout });
         }
         private void btnDKTT_Click(object sender, EventArgs e)
         {
             loadMiniForm<View.Form_TamTru>();
-            btnSoHoKhau.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTV.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTT.BackColor = Color.FromArgb(12, 61, 92);
-            //btnTimKiem.BackColor = Color.FromArgb(4, 41, 68);
-            //btnBaoCao.BackColor = Color.FromArgb(4, 41, 68);
-            btnLogout.BackColor = Color.FromArgb(4, 41, 68);
-        }
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            //loadMiniForm<Form_TD>();
-            btnSoHoKhau.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTV.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTT.BackColor = Color.FromArgb(4, 41, 68);
-            //btnTimKiem.BackColor = Color.FromArgb(12, 61, 92);
-            //btnBaoCao.BackColor = Color.FromArgb(4, 41, 68);
-            btnLogout.BackColor = Color.FromArgb(4, 41, 68);
-        }
-
-        private void btnBaoCao_Click(object sender, EventArgs e)
-        {
-            //loadMiniForm<Form_KHTT>();
-            btnSoHoKhau.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTV.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTT.BackColor = Color.FromArgb(4, 41, 68);
-            //btnTimKiem.BackColor = Color.FromArgb(4, 41, 68);
-            //btnBaoCao.BackColor = Color.FromArgb(12, 61, 92);
-            btnLogout.BackColor = Color.FromArgb(4, 41, 68);
+            changeColor(btnDKTT,
+                         new List<Button> { btnCapSoHoKhau, btnThongTinSoKhau, btnThayDoiNhanKhau, btnChuyenKhau },
+                         new List<Button> { btnSoHoKhau, btnDKTV, btnLogout });
         }
 
         private void pbProfile_Click(object sender, EventArgs e)
         {
-            //loadMiniForm<Profile>();
+            loadMiniForm < View.Shared.Form_Profile>();
         }
 
         private void btnCapSoHoKhau_Click(object sender, EventArgs e)
         {
             loadMiniForm<View.Form_SoHoKhau>();
+            changeColor(btnCapSoHoKhau,
+                         new List<Button> { btnThongTinSoKhau, btnThayDoiNhanKhau, btnChuyenKhau },
+                         new List<Button> { btnDKTT, btnSoHoKhau, btnDKTV, btnLogout });
         }
 
         private void btnThongTinSoKhau_Click(object sender, EventArgs e)
         {
             loadMiniForm<View.Form_Info>();
-        }
-
-        private void btnThayDoiChuHo_Click(object sender, EventArgs e)
-        {
-
+            changeColor(btnThongTinSoKhau,
+                         new List<Button> { btnCapSoHoKhau, btnThayDoiNhanKhau, btnChuyenKhau },
+                         new List<Button> { btnDKTT, btnSoHoKhau, btnDKTV, btnLogout });
         }
 
         private void btnChuyenKhau_Click(object sender, EventArgs e)
         {
             loadMiniForm<View.Form_ChuyenKhau>();
+            changeColor(btnChuyenKhau,
+                         new List<Button> { btnCapSoHoKhau, btnThayDoiNhanKhau, btnThongTinSoKhau },
+                         new List<Button> { btnDKTT, btnSoHoKhau, btnDKTV, btnLogout });
+        }
+
+        private void btnThayDoiNhanKhau_Click(object sender, EventArgs e)
+        {
+            loadMiniForm<View.User.Form_DoiNhanKhau>();
+            changeColor(btnThayDoiNhanKhau,
+                         new List<Button> { btnCapSoHoKhau, btnChuyenKhau, btnThongTinSoKhau },
+                         new List<Button> { btnDKTT, btnSoHoKhau, btnDKTV, btnLogout });
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            btnSoHoKhau.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTV.BackColor = Color.FromArgb(4, 41, 68);
-            btnDKTT.BackColor = Color.FromArgb(4, 41, 68);
-            //btnTimKiem.BackColor = Color.FromArgb(4, 41, 68);
-            //btnBaoCao.BackColor = Color.FromArgb(4, 41, 68);
-            this.BackColor = Color.FromArgb(12, 61, 92);
+            changeColor(btnLogout,
+                         new List<Button> { btnCapSoHoKhau, btnChuyenKhau, btnThongTinSoKhau, btnThayDoiNhanKhau },
+                         new List<Button> { btnDKTT, btnSoHoKhau, btnDKTV });
             DialogResult result = MessageBox.Show("Ban co chac muon dang xuat khoi tai khoan nay khong ?", "Canh bao", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
