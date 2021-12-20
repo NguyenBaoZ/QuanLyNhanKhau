@@ -76,19 +76,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Authenticate.cs" />
     <Compile Include="Model\CitizenDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HouseholdBook.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\HouseHoldMember.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\HouseholdTranfer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Authenticate.cs" />
     <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,11 +108,15 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Presenter\AdminAction.cs" />
+    <Compile Include="Presenter\Signup.cs" />
+    <Compile Include="Presenter\User\TamTruPresenter.cs" />
     <Compile Include="Presenter\Login.cs" />
-    <Compile Include="Presenter\RequestBase.cs" />
     <Compile Include="Presenter\UserAction.cs" />
+    <Compile Include="Repository\User\DetailRepository.cs" />
+    <Compile Include="Repository\User\RequestRepository.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="util\typed.cs" />
+    <Compile Include="util\QueryAbleExt.cs" />
     <Compile Include="View\Admin\Form_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +308,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Presenter\Admin\" />
+    <Folder Include="Repository\Admin\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

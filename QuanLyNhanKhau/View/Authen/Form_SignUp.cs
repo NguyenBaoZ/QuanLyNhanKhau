@@ -11,13 +11,29 @@ using System.Runtime.InteropServices;
 
 namespace QuanLyNhanKhau.View
 {
-    public partial class Form_SignUp : Form
+    public interface ISignUp
     {
+        string Password { get; }
+        string Repassword { get; }
+        string Username { get; }
+        string CCID { get; }
+    }
+    public partial class Form_SignUp : Form, ISignUp
+    {
+        public string Password { get { return this.txbPassword.Text; } }
+
+        public string Repassword { get { return this.txbConfirm.Text; } }
+
+        public string Username { get { return this.txbUser.Text; } }
+
+        public string CCID { get { return this.txtCCCD.Text; } }
+        private Presenter.SignUp _present { get; set; }
 
         public Form_SignUp()
         {
             InitializeComponent();
-            
+
+            this._present = new Presenter.SignUp(this);
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -110,7 +126,7 @@ namespace QuanLyNhanKhau.View
         }
         private void announce(string msg)
         {
-            
+
             lbErrorMessage.Visible = false;
             txbConfirm.Visible = false;
             lineShape3.Visible = false;
@@ -124,6 +140,7 @@ namespace QuanLyNhanKhau.View
         private void msgError(string msg)
         {
             lbErrorMessage.Text = " " + msg;
+            lbErrorMessage.BringToFront();
             lbErrorMessage.Visible = true;
         }
         private void Logout(object sender, FormClosedEventArgs e)
@@ -173,10 +190,31 @@ namespace QuanLyNhanKhau.View
                 txbConfirm.UseSystemPasswordChar = false;
             }
         }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnRegisterClick(object sender, EventArgs e)
+        {
+            Console.Write("Login");
+            if (this.Password == this.Repassword)
+            {
+                var kq = this._present.signUp();
+                if (kq == Model.SignUpState.SUCCEED)
+                {
+                    // load login form
+                    msgError("Đăng kí Thành công");
+                }
+                else
+                {
+                    msgError("Đăng kí thất bại");
+                }
+            }
+            else
+            {
+                msgError("password không trùng khớp");
+            }
         }
     }
 }

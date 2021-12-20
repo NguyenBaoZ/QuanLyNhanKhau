@@ -20,11 +20,12 @@ namespace QuanLyNhanKhau.Model
         public string Approved { get; set; }
         public string ResolveDescription { get; set; }
         public int ResolveBy { get; set; }
-        public string ExpiredDate { get; set; }
-        public string CreatedDate { get; set; }
+        public Nullable<System.DateTime> ExpiredDate { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public string RequestType { get; set; }
     
         public virtual CitizenDetail CitizenDetail { get; set; }
-        public virtual User User { get; set; }
+        public virtual User UResolveBy { get; set; }
+        public virtual User URequestBy { get; set; }
     }
 }

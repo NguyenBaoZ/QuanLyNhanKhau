@@ -20,17 +20,15 @@ namespace QuanLyNhanKhau.Presenter
         {
             if (this._form.Username == "ADMIN")
             {
-                return LoginState.LOG_IN_MEMBER;
+                return LoginState.LOG_IN_ADMIN;
             }
             else if (this._form.Username == "USERNAME")
             {
                 return LoginState.LOG_IN_MEMBER;
-
             }
             _repo.Auth.login(this._form.Username, this._form.Password);
-
+            Console.WriteLine(_repo.Auth.loginState + _repo.Auth.currentUser.Email);
             return _repo.Auth.loginState;
-
         }
     }
 }

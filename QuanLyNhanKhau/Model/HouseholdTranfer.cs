@@ -22,8 +22,9 @@ namespace QuanLyNhanKhau.Model
         public string ResolveDescription { get; set; }
         public int ResolveBy { get; set; }
         public string Reason { get; set; }
-        public string CreatedDate { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     
         public virtual HouseholdBook HouseholdBook { get; set; }
+        public virtual User UResolveBy { get; set; }
     }
 }

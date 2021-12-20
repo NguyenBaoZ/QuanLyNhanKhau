@@ -11,8 +11,14 @@ using System.Windows.Forms;
 
 namespace QuanLyNhanKhau.View.User
 {
-    public partial class Form_DoiNhanKhau : Form
+    interface IDoiNhanKhau
     {
+        List<Model.User> DanhSachThanhVienCungThayDoi { get; set; }
+    }
+    public partial class Form_DoiNhanKhau : Form, IDoiNhanKhau
+    {
+        public List<Model.User> DanhSachThanhVienCungThayDoi { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public Form_DoiNhanKhau()
         {
             InitializeComponent();

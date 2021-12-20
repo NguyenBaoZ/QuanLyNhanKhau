@@ -19,6 +19,8 @@ namespace QuanLyNhanKhau.Model
         {
             this.CitizenDetails = new HashSet<CitizenDetail>();
             this.TemporaryRequests = new HashSet<TemporaryRequest>();
+            this.TemporaryRequests1 = new HashSet<TemporaryRequest>();
+            this.HouseholdTranfers = new HashSet<HouseholdTranfer>();
         }
     
         public int Id { get; set; }
@@ -32,5 +34,9 @@ namespace QuanLyNhanKhau.Model
         public virtual ICollection<CitizenDetail> CitizenDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TemporaryRequest> TemporaryRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TemporaryRequest> TemporaryRequests1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HouseholdTranfer> HouseholdTranfers { get; set; }
     }
 }
