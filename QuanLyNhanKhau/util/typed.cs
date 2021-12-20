@@ -25,27 +25,29 @@ namespace QuanLyNhanKhau.util
             this.Village = village;
             this.General = general;
         }
-        public string Parser(string s)
+        public static Location Parser(string s)
         {
+
             var split = s.Split('|');
             if (split.Length == 3)
             {
-                Provine = split[0];
-                District = split[1];
-                Village = split[2];
+                var Provine = split[0];
+                var District = split[1];
+                var Village = split[2];
+                return new Location(Provine, District, Village);
             }
             else if (split.Length == 4)
             {
-                Provine = split[0];
-                District = split[1];
-                Village = split[2];
-                General = split[3];
+                var Provine = split[0];
+                var District = split[1];
+                var Village = split[2];
+                var General = split[3];
+                return new Location(Provine, District, Village, General);
             }
             else
             {
                 throw new Exception("Location Parser Error");
             }
-            return s;
         }
         public string get()
         {

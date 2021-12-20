@@ -30,10 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.noithuongtru_px = new System.Windows.Forms.TextBox();
+            this.noithuongtru_qh = new System.Windows.Forms.TextBox();
+            this.noithuongtru_tp = new System.Windows.Forms.TextBox();
+            this.noithuongtru_diachi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -93,10 +93,10 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.noithuongtru_px);
+            this.panel2.Controls.Add(this.noithuongtru_qh);
+            this.panel2.Controls.Add(this.noithuongtru_tp);
+            this.panel2.Controls.Add(this.noithuongtru_diachi);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label4);
@@ -144,33 +144,33 @@
             this.panel2.Size = new System.Drawing.Size(1059, 774);
             this.panel2.TabIndex = 11;
             // 
-            // textBox1
+            // noithuongtru_px
             // 
-            this.textBox1.Location = new System.Drawing.Point(813, 404);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 22);
-            this.textBox1.TabIndex = 152;
+            this.noithuongtru_px.Location = new System.Drawing.Point(813, 404);
+            this.noithuongtru_px.Name = "noithuongtru_px";
+            this.noithuongtru_px.Size = new System.Drawing.Size(217, 22);
+            this.noithuongtru_px.TabIndex = 152;
             // 
-            // textBox2
+            // noithuongtru_qh
             // 
-            this.textBox2.Location = new System.Drawing.Point(503, 404);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(217, 22);
-            this.textBox2.TabIndex = 151;
+            this.noithuongtru_qh.Location = new System.Drawing.Point(503, 404);
+            this.noithuongtru_qh.Name = "noithuongtru_qh";
+            this.noithuongtru_qh.Size = new System.Drawing.Size(217, 22);
+            this.noithuongtru_qh.TabIndex = 151;
             // 
-            // textBox3
+            // noithuongtru_tp
             // 
-            this.textBox3.Location = new System.Drawing.Point(157, 404);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 22);
-            this.textBox3.TabIndex = 150;
+            this.noithuongtru_tp.Location = new System.Drawing.Point(157, 404);
+            this.noithuongtru_tp.Name = "noithuongtru_tp";
+            this.noithuongtru_tp.Size = new System.Drawing.Size(213, 22);
+            this.noithuongtru_tp.TabIndex = 150;
             // 
-            // textBox4
+            // noithuongtru_diachi
             // 
-            this.textBox4.Location = new System.Drawing.Point(156, 440);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(875, 22);
-            this.textBox4.TabIndex = 149;
+            this.noithuongtru_diachi.Location = new System.Drawing.Point(156, 440);
+            this.noithuongtru_diachi.Name = "noithuongtru_diachi";
+            this.noithuongtru_diachi.Size = new System.Drawing.Size(875, 22);
+            this.noithuongtru_diachi.TabIndex = 149;
             // 
             // label2
             // 
@@ -226,7 +226,7 @@
             "Nam",
             "Nữ"});
             this.comboBox1.Location = new System.Drawing.Point(931, 32);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 24);
             this.comboBox1.TabIndex = 143;
@@ -298,7 +298,7 @@
             // dateTimePicker5
             // 
             this.dateTimePicker5.Location = new System.Drawing.Point(501, 73);
-            this.dateTimePicker5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker5.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker5.Name = "dateTimePicker5";
             this.dateTimePicker5.Size = new System.Drawing.Size(217, 22);
             this.dateTimePicker5.TabIndex = 134;
@@ -306,7 +306,7 @@
             // dateTimePicker6
             // 
             this.dateTimePicker6.Location = new System.Drawing.Point(603, 35);
-            this.dateTimePicker6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker6.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker6.Name = "dateTimePicker6";
             this.dateTimePicker6.Size = new System.Drawing.Size(231, 22);
             this.dateTimePicker6.TabIndex = 133;
@@ -551,10 +551,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox noithuongtru_px;
+        private System.Windows.Forms.TextBox noithuongtru_qh;
+        private System.Windows.Forms.TextBox noithuongtru_tp;
+        private System.Windows.Forms.TextBox noithuongtru_diachi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

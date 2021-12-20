@@ -39,7 +39,20 @@ namespace QuanLyNhanKhau.View
         public string NoiSinh { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime ThoiGianTamTru { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime TamTruDenNgay { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Location NoiDangKiTamVang { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Location NoiDangKiTamVang
+        {
+            get
+            {
+                return new Location(this.noithuongtru_tp.Text, this.noithuongtru_qh.Text, noithuongtru_px.Text, noithuongtru_diachi.Text);
+            }
+            set
+            {
+                this.noithuongtru_tp.Text = value.Provine;
+                this.noithuongtru_qh.Text = value.District;
+                this.noithuongtru_px.Text = value.Village;
+                this.noithuongtru_diachi.Text = value.General;
+            }
+        }
         public string Lydo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private void label6_Click(object sender, EventArgs e)
