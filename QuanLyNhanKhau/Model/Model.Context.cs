@@ -27,7 +27,6 @@ namespace QuanLyNhanKhau.Model
     
         public virtual DbSet<CitizenDetail> CitizenDetails { get; set; }
         public virtual DbSet<HouseholdBook> HouseholdBooks { get; set; }
-        public virtual DbSet<HouseHoldMember> HouseHoldMembers { get; set; }
         public virtual DbSet<HouseholdTranfer> HouseholdTranfers { get; set; }
         public virtual DbSet<TemporaryRequest> TemporaryRequests { get; set; }
         public virtual DbSet<User> Users { get; set; }

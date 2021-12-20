@@ -18,6 +18,7 @@ namespace QuanLyNhanKhau.Model
         public HouseholdBook()
         {
             this.HouseholdTranfers = new HashSet<HouseholdTranfer>();
+            this.Members = new HashSet<CitizenDetail>();
         }
     
         public int BookId { get; set; }
@@ -29,5 +30,7 @@ namespace QuanLyNhanKhau.Model
         public virtual CitizenDetail CitizenDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HouseholdTranfer> HouseholdTranfers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CitizenDetail> Members { get; set; }
     }
 }

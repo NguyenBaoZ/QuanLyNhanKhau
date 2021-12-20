@@ -19,6 +19,7 @@ namespace QuanLyNhanKhau.Model
         {
             this.HouseholdBooks = new HashSet<HouseholdBook>();
             this.TemporaryRequests = new HashSet<TemporaryRequest>();
+            this.HouseholdBooks1 = new HashSet<HouseholdBook>();
         }
     
         public int DetailId { get; set; }
@@ -26,7 +27,7 @@ namespace QuanLyNhanKhau.Model
         public string Address { get; set; }
         public System.DateTime BirthDate { get; set; }
         public string CCCDId { get; set; }
-        public string UpdatedAt { get; set; }
+        public System.DateTime UpdatedAt { get; set; }
         public string Gender { get; set; }
         public string Name { get; set; }
         public string CCCDProvideAddress { get; set; }
@@ -40,5 +41,7 @@ namespace QuanLyNhanKhau.Model
         public virtual ICollection<HouseholdBook> HouseholdBooks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TemporaryRequest> TemporaryRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HouseholdBook> HouseholdBooks1 { get; set; }
     }
 }

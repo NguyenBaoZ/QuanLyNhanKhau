@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using QuanLyNhanKhau.Presenter;
 
 namespace QuanLyNhanKhau.View
 {
@@ -15,7 +16,6 @@ namespace QuanLyNhanKhau.View
     {
         string Username { get; set; }
         string Password { get; set; }
-        Presenter.Login _present { get; set; }
     }
     public partial class Form_Login : Form, ILogin
     {
@@ -147,11 +147,14 @@ namespace QuanLyNhanKhau.View
                 txbPassword.Focus();
                 return;
             }
-            switch (_present.login())
+            var t = _present.login();
+            Console.WriteLine("view" + t);
+            switch (t)
             {
                 case Model.LoginState.LOG_OUT:
                 case Model.LoginState.LOG_IN_MODERATOR:
                     {
+
                         msgError("Incorrect username or password entered. \n Please try again.");
                     }
                     break;

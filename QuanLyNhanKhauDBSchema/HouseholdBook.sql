@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[HouseholdBook]
 (
-	[BookId] INT NOT NULL , 
+	[BookId] INT IDENTITY(1,1) NOT NULL , 
     [Address] NTEXT NULL, 
     [CreateDate] DATETIME NOT NULL DEFAULT GETDATE(), 
     [UpdateDate] DATETIME NOT NULL DEFAULT GETDATE(), 
